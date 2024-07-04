@@ -1,0 +1,17 @@
+﻿
+
+namespace Restaurant.Cliente.Application.Base
+{
+    internal class ServiceResult
+    {
+        public ServiceResult()
+        {
+            Success = true;
+        }
+        public bool Success { get; set; }
+        public string Message { get; set; }
+
+        public dynamic? Data { get; set; }
+    }
+}
+
