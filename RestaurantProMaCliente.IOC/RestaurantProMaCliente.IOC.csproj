@@ -7,14 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Notification\Model\" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Restaurant.Client.Domain\Restaurant.Cliente.Domain.csproj" />
     <ProjectReference Include="..\Restaurant.Cliente.Application\Restaurant.Cliente.Application.csproj" />
     <ProjectReference Include="..\Restaurant.Cliente.Persistance\Restaurant.Cliente.Persistance.csproj" />
-    <ProjectReference Include="..\RestaurantProMaCliente.IOC\RestaurantProMaCliente.IOC.csproj" />
+    <ProjectReference Include="..\Restaurant.Common.Data\Restaurant.Common.Data.csproj" />
   </ItemGroup>
 
 </Project>

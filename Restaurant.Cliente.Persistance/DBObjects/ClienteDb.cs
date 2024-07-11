@@ -1,18 +1,16 @@
-﻿using WebApplication1.Web.Data.Models;
-using WebApplication1.Web.Data.Context;
-using WebApplication1.Web.Data.Entities;
-using WebApplication1.Web.Data.Exceptions;
-using WebApplication1.Web.Data.Interfaces;
-using WebApplication1.Web.Data.Models;
-using WebApplication1.Web.Data.Models.Cliente;
+﻿
+using Restaurant.Cliente.Domain.Entities;
+using Restaurant.Cliente.Persistance.Context;
+using Restaurant.Cliente.Persistance.Interfaces;
+using Restaurant.Cliente.Persistance.Models.Cliente;
 
-namespace Restaurant.Cliente.Persistance
+namespace Restaurant.Cliente.Persistance.DBObjects
 {
     public class ClienteDb : IClienteDb
     {
         private readonly RestaurantContext context;
 
-        public ClienteDb(RestauranteContext context)
+        public ClienteDb(RestaurantContext context)
         {
             this.context = context;
         }
@@ -52,7 +50,7 @@ namespace Restaurant.Cliente.Persistance
             Cliente clienteToDelete = this.context.Clientes.Find(clienteRemove.IdCliente);
         }
 
-        public void saveCliente(ClienteSaveModel clienteSave)
+        public void SaveCliente(ClienteSaveModel clienteSave)
         {
             Cliente cliente = new Cliente()
 
@@ -66,12 +64,17 @@ namespace Restaurant.Cliente.Persistance
             this.context.SaveChanges(); ;
         }
 
+        public void saveCliente(ClienteSaveModel cliente)
+        {
+            throw new NotImplementedException();
+        }
+
         public void UpdateCliente(ClienteUpdateModel updateModel)
         {
             Cliente clienteToUpdate = this.context.Clientes.Find(updateModel.IdCliente);
             if (clienteToUpdate == null)
             {
-                throw new EmpleadoDbException("El cliente no se encuentra registrado.");
+                throw new Empleado("El cliente no se encuentra registrado.");
             }
             clienteToUpdate.IdCliente = updateModel.IdCliente;
             clienteToUpdate.Nombre = updateModel.Nombre;

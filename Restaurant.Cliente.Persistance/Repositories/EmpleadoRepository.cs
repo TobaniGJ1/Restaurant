@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Restaurant.Cliente.Persistance.Models
+namespace Restaurant.Cliente.Persistance.Repositories
 {
-    public class ClienteModel
+    internal class EmpleadoRepository
     {
     }
 }

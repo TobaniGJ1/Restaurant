@@ -1,10 +1,13 @@
-﻿using WebApplication1.Web.Data.Models;
-using WebApplication1.Web.Data.Context;
-using WebApplication1.Web.Data.Exceptions;
+﻿
 
-using WebApplication1.Web.Data.Models.Empleado;
+using Restaurant.Cliente.Domain.Entities;
+using Restaurant.Cliente.Persistance.Context;
+using Restaurant.Cliente.Persistance.Exceptions;
+using Restaurant.Cliente.Persistance.Interfaces;
+using Restaurant.Cliente.Persistance.Models.Empleado;
+using Restaurant.Empleado.Persistance.Interfaces;
 
-namespace Restaurant.Cliente.Persistance
+namespace Restaurant.Cliente.Persistance.DBObjects
 {
     public class EmpleadoDb : IEmpleadoDb
     {
@@ -46,7 +49,8 @@ namespace Restaurant.Cliente.Persistance
             throw new NotImplementedException();
         }
 
-        public void saveEmpleado(EmpleadoSaveModel empleadoSave)
+
+        public void SaveEmpleado(EmpleadoSaveModel empleadoSave)
         {
             Empleado empleado = new Empleado() 
 
@@ -57,6 +61,11 @@ namespace Restaurant.Cliente.Persistance
             };
             this.context.Empleados.Add(empleado);
             this.context.SaveChanges(); 
+        }
+
+        public void saveEmpleado(EmpleadoSaveModel empleado)
+        {
+            throw new NotImplementedException();
         }
 
         public void UpdateEmpleado(EmpleadoUpdateModel updateModel)
