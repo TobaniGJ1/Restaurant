@@ -11,12 +11,15 @@ namespace Restaurant.Cliente.Api.Controllers
     [ApiController]
     public class ClienteController : ControllerBase
     {
+        
+        private readonly IClienteService clienteService;
+
         public ClienteController(IClienteService clienteService)
         {
             this.clienteService = clienteService;
         }
         // GET: api/<ClienteController>
-        [HttpGet("GetCourse")]
+        [HttpGet("GetCourses")]
         public IActionResult Get()
         {
             var result = this.clienteService.GetClientes();
@@ -32,7 +35,7 @@ namespace Restaurant.Cliente.Api.Controllers
         [HttpGet("GetClienteById")]
         public IActionResult Get(int id)
         {
-            var result = this.clienteService.GetClienteById(id);
+            var result = this.clienteService.GetCliente(id);
             if (!result.Success)
                 return BadRequest(result);
             else return Ok(result);
@@ -43,7 +46,7 @@ namespace Restaurant.Cliente.Api.Controllers
         [HttpPost("SaveCliente")]
         public IActionResult Post([FromBody] ClienteSaveModel clienteSave)
         {
-            var result = this.clienteService.ClienteSave(clienteSave);
+            var result = this.clienteService.SaveClientes(clienteSave);
             if (!result.Success)
                 return BadRequest(result);
             else return Ok(result);
@@ -54,7 +57,7 @@ namespace Restaurant.Cliente.Api.Controllers
         [HttpPost("UpdateCliente")]
         public IActionResult Put(ClienteUpdateModel clienteUpdate)
         {
-            var result = this.clienteService.UpdateCliente(clienteUpdate);
+            var result = this.clienteService.UpdateClientes(clienteUpdate);
             if (!result.Success)
                 return BadRequest(result);
             else return Ok(result);
@@ -62,13 +65,15 @@ namespace Restaurant.Cliente.Api.Controllers
         }
         // DELETE api/<ClienteController>/5
         [HttpDelete("RemoveCliente")]
-        public void Delete(ClienteRemoveModel clienteRemove)
+        public ActionResult Delete(ClienteRemoveModel clienteRemove)
         {
-            var result = this.clienteService.SaveCliente(clienteRemove);
+            var result = this.clienteService.RemoveClientes(clienteRemove);
             if (!result.Success)
                 return BadRequest(result);
-            else return Ok(result);
 
+            else
+                return Ok(result);
+              
         }
     }
 }

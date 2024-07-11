@@ -103,7 +103,7 @@ namespace Restaurant.Cliente.Persistance.Services
             {
                 result.Success = false;
                 result.Message = "Ocurrio un error actualizando los datos";
-
+                return result;
 
             }
             return result;
