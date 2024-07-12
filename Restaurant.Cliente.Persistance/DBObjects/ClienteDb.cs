@@ -1,6 +1,7 @@
 ﻿
 using Restaurant.Cliente.Domain.Entities;
 using Restaurant.Cliente.Persistance.Context;
+using Restaurant.Cliente.Persistance.Exceptions;
 using Restaurant.Cliente.Persistance.Interfaces;
 using Restaurant.Cliente.Persistance.Models.Cliente;
 
@@ -40,19 +41,14 @@ namespace Restaurant.Cliente.Persistance.DBObjects
             }
             
 
-        public void RemoveCliente()
-        {
-            throw new NotImplementedException();
-        }
-
         public void RemoveCliente(ClienteRemoveModel clienteRemove)
         {
-            Cliente clienteToDelete = this.context.Clientes.Find(clienteRemove.IdCliente);
+            Restaurant.Cliente.Domain.Entities.Cliente clienteToDelete = this.context.Clientes.Find(clienteRemove.IdCliente);
         }
 
         public void SaveCliente(ClienteSaveModel clienteSave)
         {
-            Cliente cliente = new Cliente()
+            Restaurant.Cliente.Domain.Entities.Cliente cliente = new Restaurant.Cliente.Domain.Entities.Cliente()
 
             {
                 IdCliente = clienteSave.IdCliente,
@@ -64,17 +60,12 @@ namespace Restaurant.Cliente.Persistance.DBObjects
             this.context.SaveChanges(); ;
         }
 
-        public void saveCliente(ClienteSaveModel cliente)
-        {
-            throw new NotImplementedException();
-        }
-
         public void UpdateCliente(ClienteUpdateModel updateModel)
         {
-            Cliente clienteToUpdate = this.context.Clientes.Find(updateModel.IdCliente);
+            Restaurant.Cliente.Domain.Entities.Cliente clienteToUpdate = this.context.Clientes.Find(updateModel.IdCliente);
             if (clienteToUpdate == null)
             {
-                throw new Empleado("El cliente no se encuentra registrado.");
+                throw new ClienteDbException("El cliente no se encuentra registrado.");
             }
             clienteToUpdate.IdCliente = updateModel.IdCliente;
             clienteToUpdate.Nombre = updateModel.Nombre;

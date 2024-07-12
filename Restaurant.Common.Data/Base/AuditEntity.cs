@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Restaurant.Common.Data.Base
 {
-    public abstract class AuditEntity<TType> : BaseEntity<TType>
+    public abstract class AuditEntity : BaseEntity
     {
-
+       public String? Nombre { get; set; }
     }
 }

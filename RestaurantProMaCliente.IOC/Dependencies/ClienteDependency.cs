@@ -5,7 +5,9 @@ using Restaurant.Cliente.Persistance.Interfaces;
 using Restaurant.Cliente.Persistance.Repositories;
 using Restaurant.Cliente.Persistance.Services;
 using Restaurant.Empleado.Persistance.Interfaces;
+using Restaurant.Cliente.Domain;
 using System.Runtime.CompilerServices;
+using Restaurant.Cliente.Domain.Interfaces;
 
 namespace RestaurantProMaCliente.IOC.Dependencies
 {
@@ -14,8 +16,8 @@ namespace RestaurantProMaCliente.IOC.Dependencies
         public static void AddClienteDependency(this IServiceCollection service)
         {
             #region"Repositorios"
+            service.AddScoped<IClienteRepository, ClienteRepository>();
             service.AddScoped<IEmpleadoRepository, EmpleadoRepository>();
-            service.AddScoped<IClienteDb, IClienteRepository>();
             #endregion
 
             #region"Services"

@@ -1,10 +1,11 @@
 ﻿
 
+using Restaurant.Cliente.Domain.Interfaces;
 using System.Linq.Expressions;
 
-namespace Restaurant.Cliente.Persistance
+namespace Restaurant.Cliente.Persistance.Repositories
 {
-    public class ClienteRepository
+    public class ClienteRepository : IClienteRepository
     {
         public bool Exists(Expression<Func<Domain.Entities.Cliente, bool>> filter)
         {

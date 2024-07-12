@@ -9,12 +9,13 @@ using System.Threading.Tasks;
 
 namespace Restaurant.Cliente.Domain.Entities
 {
-    [Table("Empleado", Schema = "dbo")]
-    public class Empleado
+    [Table("Cliente", Schema = "dbo")]
+    public class Empleado : BaseEntity
     {
         [Key]
         public int IdEmpleado { get; set; }
         public string? Nombre { get; set; }
         public string? Cargo { get; set; }
+        
     }
 }

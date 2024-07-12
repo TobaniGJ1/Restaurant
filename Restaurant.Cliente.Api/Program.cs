@@ -8,7 +8,8 @@ using RestaurantProMaCliente.IOC.Dependencies;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddDbContext<RestaurantContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("RestaurantContext")));
+builder.Services.AddDbContext<RestaurantContext>(options =>
+options.UseSqlServer(builder.Configuration.GetConnectionString("RestaurantContext")));
 
 builder.Services.AddControllers();
 

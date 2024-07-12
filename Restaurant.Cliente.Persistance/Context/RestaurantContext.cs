@@ -17,13 +17,10 @@ namespace Restaurant.Cliente.Persistance.Context
         {
         }
         #region"Db Sets"
-        public DbSet<Domain.Entities.Cliente> Clientes { get; set; }
         public DbSet<Domain.Entities.Empleado> Empleados { get; set; }
+        public DbSet<Domain.Entities.Cliente> Clientes { get; set; }
 
-        public  RestaurantContext(RestaurantContext v)
-        {
-            throw new NotImplementedException();
-        }
+     
         #endregion
         #endregion
     }

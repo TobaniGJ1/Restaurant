@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Restaurant.Common.Data.Base
 {
-    public abstract class BaseEntity<TType>
+    public abstract class BaseEntity
     {
 
-        public abstract Type Id { get; set; }
+        public int  Id { get; set; }
     }
 }

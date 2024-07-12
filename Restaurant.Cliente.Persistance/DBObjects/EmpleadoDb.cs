@@ -6,6 +6,7 @@ using Restaurant.Cliente.Persistance.Exceptions;
 using Restaurant.Cliente.Persistance.Interfaces;
 using Restaurant.Cliente.Persistance.Models.Empleado;
 using Restaurant.Empleado.Persistance.Interfaces;
+using Restaurant;
 
 namespace Restaurant.Cliente.Persistance.DBObjects
 {
@@ -39,20 +40,15 @@ namespace Restaurant.Cliente.Persistance.DBObjects
             }).ToList();
         }
 
-        public void RemoveEmpleado()
-        {
-            throw new NotImplementedException();
-        }
-
         public void RemoveEmpleado(EmpleadoRemoveModel empleadoRemove)
         {
-            throw new NotImplementedException();
+            Restaurant.Cliente.Domain.Entities.Empleado empleadoToDelete = this.context.Empleados.Find(empleadoRemove.IdEmpleado);
         }
 
 
         public void SaveEmpleado(EmpleadoSaveModel empleadoSave)
         {
-            Empleado empleado = new Empleado() 
+            Restaurant.Cliente.Domain.Entities.Empleado empleado = new Restaurant.Cliente.Domain.Entities.Empleado() 
 
             {
                 IdEmpleado = empleadoSave.IdEmpleado,
@@ -63,14 +59,9 @@ namespace Restaurant.Cliente.Persistance.DBObjects
             this.context.SaveChanges(); 
         }
 
-        public void saveEmpleado(EmpleadoSaveModel empleado)
-        {
-            throw new NotImplementedException();
-        }
-
         public void UpdateEmpleado(EmpleadoUpdateModel updateModel)
         {
-            Empleado empleadoToUpdate = this.context.Empleados.Find(updateModel.IdEmpleado);
+            Restaurant.Cliente.Domain.Entities.Empleado empleadoToUpdate = this.context.Empleados.Find(updateModel.IdEmpleado);
             if (empleadoToUpdate == null)
             {
                 throw new EmpleadoDbException("El empleado no se encuentra registrado.");

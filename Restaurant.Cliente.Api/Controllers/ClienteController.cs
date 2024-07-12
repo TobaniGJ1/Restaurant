@@ -7,7 +7,7 @@ using Restaurant.Cliente.Persistance.Models.Cliente;
 
 namespace Restaurant.Cliente.Api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class ClienteController : ControllerBase
     {
