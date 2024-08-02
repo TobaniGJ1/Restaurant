@@ -15,10 +15,8 @@ namespace RestaurantProMaCliente.IOC.Dependencies
     {
         public static void AddClienteDependency(this IServiceCollection service)
         {
-            #region"Repositorios"
             service.AddScoped<IClienteRepository, ClienteRepository>();
-            service.AddScoped<IEmpleadoRepository, EmpleadoRepository>();
-            #endregion
+          
 
             #region"Services"
             service.AddTransient<IClienteService, ClienteService>();
